@@ -114,39 +114,3 @@ const seed = ({ topicData, userData, articleData, commentData }) => {
 };
 
 module.exports = seed;
-
-
-
-
-
-
-
-
-
-//     .then((articleResultArr) => {
-//       const articleLookUpObj = articleResultArr.rows.reduce(
-//         (objSoFar, article) => {
-//           objSoFar[article.title] = article.article_id;
-//           return objSoFar;
-//         },
-//         {}
-//       );
-
-//       const formatComments = commentData.map((comment) => {
-//         return [
-//           comment.body,
-//           comment.votes,
-//           comment.author,
-//           articleLookUpObj[comment.article_title],
-//           comment.created_at,
-//         ];
-//       });
-//       const commentStrQ = format(
-//         `INSERT INTO comments(body, votes, author, article_id, created_at) VALUES %L`,
-//         formatComments
-//       );
-//       return db.query(commentStrQ);
-//     });
-// };
-
-module.exports = seed;
