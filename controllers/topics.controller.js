@@ -1,10 +1,8 @@
-const { fetchTopics } = require("../models/topics.model"); // queries the database function
-const topicRouter = (request, response, next) => {
-  fetchTopics() // calls it here so it fetches the data
+const { fetchTopics } = require("../models/topics.model");
+exports.getTopics = (request, response, next) => {
+  fetchTopics()
     .then((topics) => {
-      response.status(200).send({ topics }); // if correct send topics to the client
+      response.status(200).send({ topics });
     })
     .catch(next);
 };
-
-module.exports = topicRouter;
