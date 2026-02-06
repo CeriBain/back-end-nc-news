@@ -1,11 +1,12 @@
 const {
-  fetchArticles,
-  fetchArticleById,
-  fetchCommentsByArticleId,
-} = require("../models/articles.model");
+  getArticlesService,
+  getArticleByIdService,
+  getCommentsByArticleIdService,
+  postCommentByArticleIdService,
+} = require("../services/articles.services");
 
 exports.getArticles = (request, response, next) => {
-  fetchArticles()
+  getArticlesService()
     .then((articles) => {
       response.status(200).send({ articles });
     })
@@ -13,7 +14,7 @@ exports.getArticles = (request, response, next) => {
 };
 exports.getArticleById = (request, response, next) => {
   const { article_id } = request.params;
-  fetchArticleById(article_id)
+  getArticleByIdService(article_id)
     .then((article) => {
       response.status(200).send({ article });
     })
@@ -21,9 +22,18 @@ exports.getArticleById = (request, response, next) => {
 };
 exports.getCommentsByArticleId = (request, response, next) => {
   const { article_id } = request.params;
-  fetchCommentsByArticleId(article_id)
+  getCommentsByArticleIdService(article_id)
     .then((comments) => {
       response.status(200).send({ comments });
+    })
+    .catch(next);
+};
+exports.postCommentByArticleId = (request, response, next) => {
+  const { article_id } = request.params;
+  const { username, body } = request.body;
+  postCommentByArticleIdService(article_id, username, body)
+    .then((comment) => {
+      response.status(201).send({ comment });
     })
     .catch(next);
 };
