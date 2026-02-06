@@ -3,6 +3,7 @@ class NotFoundError extends Error {
     super(message);
     this.name = "NotFoundError";
     this.status = 404;
+    this.msg = message;
   }
 }
 
