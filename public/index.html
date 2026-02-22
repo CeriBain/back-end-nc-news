@@ -10,7 +10,8 @@
     <header>
       <h1>NC News API</h1>
       <p>
-        A RESTful API for accessing news articles, comments, topics and users.
+        A free RESTful API for accessing news articles, comments, topics and
+        users.
       </p>
       <nav>
         <ul>
@@ -29,7 +30,7 @@
 
         <article>
           <h3>GET /api/topics</h3>
-          <p>Returns a list of all topics.</p>
+          <p>Returns a list of all topics</p>
           <h4>Example Response</h4>
           <pre>
 {
@@ -47,10 +48,7 @@
 
         <article>
           <h3>GET /api/articles</h3>
-          <p>
-            Returns a list of all articles, sorted by date descending by
-            default.
-          </p>
+          <p>Returns a list of all articles, sorted by date</p>
           <h4>Queries</h4>
           <table>
             <thead>
@@ -102,7 +100,7 @@
 
         <article>
           <h3>GET /api/articles/:article_id</h3>
-          <p>Returns a single article by its ID.</p>
+          <p>Returns a single article by its ID</p>
           <h4>Example Response</h4>
           <pre>
 {
@@ -125,7 +123,7 @@
           <h3>PATCH /api/articles/:article_id</h3>
           <p>
             Updates the vote count of an article. Pass a positive or negative
-            integer to increment or decrement.
+            integer to increment or decrement the count
           </p>
           <h4>Request Body</h4>
           <pre>{ "inc_votes": 1 }</pre>
@@ -148,7 +146,7 @@
 
         <article>
           <h3>GET /api/articles/:article_id/comments</h3>
-          <p>Returns all comments for a given article, most recent first.</p>
+          <p>Returns all comments for a given article, most recent first</p>
           <h4>Example Response</h4>
           <pre>
 {
@@ -168,7 +166,7 @@
 
         <article>
           <h3>POST /api/articles/:article_id/comments</h3>
-          <p>Adds a new comment to an article.</p>
+          <p>Adds a new comment to an article</p>
           <h4>Request Body</h4>
           <pre>
 {
@@ -193,7 +191,7 @@
 
         <article>
           <h3>DELETE /api/comments/:comment_id</h3>
-          <p>Deletes a comment by its ID. Returns no content on success.</p>
+          <p>Deletes a comment by its ID</p>
           <h4>Response</h4>
           <p>Status: <code>204 No Content</code></p>
         </article>
@@ -205,7 +203,7 @@
 
         <article>
           <h3>GET /api/users</h3>
-          <p>Returns a list of all users.</p>
+          <p>Returns a list of all users</p>
           <h4>Example Response</h4>
           <pre>
 {
@@ -223,7 +221,10 @@
     </main>
 
     <footer>
-      <p>NC News API — built with Node.js, Express & PostgreSQL</p>
+      <p>
+        Thanks for using NC News API. This free API was built with Node.js,
+        Express & PostgreSQL
+      </p>
     </footer>
   </body>
 </html>
