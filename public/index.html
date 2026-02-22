@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>NC News API</title>
+  </head>
+  <body>
+    <header>
+      <h1>NC News API</h1>
+      <p>
+        A RESTful API for accessing news articles, comments, topics and users.
+      </p>
+      <nav>
+        <ul>
+          <li><a href="#topics">Topics</a></li>
+          <li><a href="#articles">Articles</a></li>
+          <li><a href="#comments">Comments</a></li>
+          <li><a href="#users">Users</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- TOPICS -->
+      <section id="topics">
+        <h2>Topics</h2>
+
+        <article>
+          <h3>GET /api/topics</h3>
+          <p>Returns a list of all topics.</p>
+          <h4>Example Response</h4>
+          <pre>
+{
+  "topics": [
+    { "slug": "coding", "description": "Code is love, code is life" }
+  ]
+}
+          </pre>
+        </article>
+      </section>
+
+      <!-- ARTICLES -->
+      <section id="articles">
+        <h2>Articles</h2>
+
+        <article>
+          <h3>GET /api/articles</h3>
+          <p>
+            Returns a list of all articles, sorted by date descending by
+            default.
+          </p>
+          <h4>Queries</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Query</th>
+                <th>Accepted Values</th>
+                <th>Default</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>sort_by</td>
+                <td>
+                  created_at, author, title, article_id, topic, votes,
+                  comment_count
+                </td>
+                <td>created_at</td>
+              </tr>
+              <tr>
+                <td>order</td>
+                <td>asc, desc</td>
+                <td>desc</td>
+              </tr>
+              <tr>
+                <td>topic</td>
+                <td>any valid topic slug</td>
+                <td>none</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Example Response</h4>
+          <pre>
+{
+  "articles": [
+    {
+      "article_id": 1,
+      "title": "Running a Node App",
+      "topic": "coding",
+      "author": "jessjelly",
+      "created_at": "2020-11-07T06:03:00.000Z",
+      "votes": 0,
+      "article_img_url": "https://example.com/image.jpg",
+      "comment_count": 8
+    }
+  ]
+}
+          </pre>
+        </article>
+
+        <article>
+          <h3>GET /api/articles/:article_id</h3>
+          <p>Returns a single article by its ID.</p>
+          <h4>Example Response</h4>
+          <pre>
+{
+  "article": {
+    "article_id": 1,
+    "title": "Running a Node App",
+    "topic": "coding",
+    "author": "jessjelly",
+    "body": "Well, the steps are simple...",
+    "created_at": "2020-11-07T06:03:00.000Z",
+    "votes": 0,
+    "article_img_url": "https://example.com/image.jpg",
+    "comment_count": 8
+  }
+}
+          </pre>
+        </article>
+
+        <article>
+          <h3>PATCH /api/articles/:article_id</h3>
+          <p>
+            Updates the vote count of an article. Pass a positive or negative
+            integer to increment or decrement.
+          </p>
+          <h4>Request Body</h4>
+          <pre>{ "inc_votes": 1 }</pre>
+          <h4>Example Response</h4>
+          <pre>
+{
+  "article": {
+    "article_id": 1,
+    "votes": 1,
+    ...
+  }
+}
+          </pre>
+        </article>
+      </section>
+
+      <!-- COMMENTS -->
+      <section id="comments">
+        <h2>Comments</h2>
+
+        <article>
+          <h3>GET /api/articles/:article_id/comments</h3>
+          <p>Returns all comments for a given article, most recent first.</p>
+          <h4>Example Response</h4>
+          <pre>
+{
+  "comments": [
+    {
+      "comment_id": 10,
+      "body": "Great article!",
+      "article_id": 1,
+      "author": "jessjelly",
+      "votes": 4,
+      "created_at": "2020-11-07T06:03:00.000Z"
+    }
+  ]
+}
+          </pre>
+        </article>
+
+        <article>
+          <h3>POST /api/articles/:article_id/comments</h3>
+          <p>Adds a new comment to an article.</p>
+          <h4>Request Body</h4>
+          <pre>
+{
+  "username": "jessjelly",
+  "body": "What a great read!"
+}
+          </pre>
+          <h4>Example Response</h4>
+          <pre>
+{
+  "comment": {
+    "comment_id": 19,
+    "body": "What a great read!",
+    "article_id": 1,
+    "author": "jessjelly",
+    "votes": 0,
+    "created_at": "2024-01-01T00:00:00.000Z"
+  }
+}
+          </pre>
+        </article>
+
+        <article>
+          <h3>DELETE /api/comments/:comment_id</h3>
+          <p>Deletes a comment by its ID. Returns no content on success.</p>
+          <h4>Response</h4>
+          <p>Status: <code>204 No Content</code></p>
+        </article>
+      </section>
+
+      <!-- USERS -->
+      <section id="users">
+        <h2>Users</h2>
+
+        <article>
+          <h3>GET /api/users</h3>
+          <p>Returns a list of all users.</p>
+          <h4>Example Response</h4>
+          <pre>
+{
+  "users": [
+    {
+      "username": "jessjelly",
+      "name": "Jess Jelly",
+      "avatar_url": "https://example.com/avatar.jpg"
+    }
+  ]
+}
+          </pre>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>NC News API — built with Node.js, Express & PostgreSQL</p>
+    </footer>
+  </body>
+</html>
