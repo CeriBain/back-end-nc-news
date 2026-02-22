@@ -15,6 +15,7 @@ const {
 } = require("./errors/error-handlers");
 
 app.use(express.json());
+app.use("/api", express.static(`${__dirname}/public`));
 
 app.get("/api/topics", getTopics);
 app.get("/api/articles", getArticles);
@@ -24,8 +25,6 @@ app.get("/api/users", getUsers);
 app.post("/api/articles/:article_id/comments", postCommentByArticleId);
 app.patch("/api/articles/:article_id", patchArticleById);
 app.delete("/api/comments/:comment_id", deleteCommentById);
-
-app.use("/api", express.static(`${__dirname}/public`));
 
 app.use(handlePSQLErrors);
 app.use(handleCustomErrors);

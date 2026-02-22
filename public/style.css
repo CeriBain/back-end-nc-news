@@ -1,7 +1,4 @@
-/* =====================
-   SETUP
-   ===================== */
-
+/*  SETUP */
 /* Variables */
 :root {
   --bg: #f9f9f9;
@@ -28,9 +25,7 @@ body {
   line-height: 1.6;
 }
 
-/* =====================
-     PAGE STRUCTURE
-     ===================== */
+/* PAGE STRUCTURE */
 
 /* Header */
 header {
@@ -74,9 +69,7 @@ footer {
   font-size: 0.875rem;
 }
 
-/* =====================
-     LAYOUT
-     ===================== */
+/*  LAYOUT */
 
 /* Main Content Area */
 main {
