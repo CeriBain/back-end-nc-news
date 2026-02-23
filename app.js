@@ -1,3 +1,4 @@
+const cors = require("cors");
 const express = require("express");
 const { getTopics } = require("./controllers/topics.controller");
 const { getArticles } = require("./controllers/articles.controller");
@@ -14,6 +15,7 @@ const {
   handlePSQLErrors,
 } = require("./errors/error-handlers");
 
+app.use(cors());
 app.use(express.json());
 app.use("/api", express.static(`${__dirname}/public`));
 
