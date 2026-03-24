@@ -1,6 +1,6 @@
 # Northcoders News API
  
-A RESTful API serving articles, topics, users, and comments — built as the back-end for a Reddit-style news aggregation app.
+A RESTful API serving articles, topics, users, and comments built as the back-end for a Reddit-style news app.
  
 ## Built With
  
@@ -9,6 +9,7 @@ A RESTful API serving articles, topics, users, and comments — built as the bac
 - **PostgreSQL** — relational database
 - **node-postgres (pg)** — database interaction
 - **Jest & Supertest** — testing
+- **Husky** — Git hooks
  
 ## Getting Started
  
@@ -47,6 +48,8 @@ PGDATABASE=nc_news
 ```
 PGDATABASE=nc_news_test
 ```
+ 
+> **Note:** If deploying to a hosted service, you'll also need a `.env.production` with a `DATABASE_URL`. Do **not** commit `.env` files — they are already listed in `.gitignore`.
  
 4. Set up and seed the databases:
  
@@ -98,8 +101,10 @@ npm test
 │   ├── data/        # Dev and test seed data
 │   ├── seeds/       # Seed functions
 │   └── setup.sql    # Database creation
+├── errors/          # Custom error handlers
 ├── models/          # Database queries
-├── routes/          # Express routers
+├── public/          # Static assets
+├── services/        # Business logic
 ├── app.js           # Express app setup
 ├── listen.js        # Server entry point
 └── endpoints.json   # API documentation
@@ -107,4 +112,5 @@ npm test
  
 ---
  
+This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/).
 This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/).
