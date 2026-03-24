@@ -23,7 +23,7 @@ A RESTful API serving articles, topics, users, and comments built as the back-en
 1. Clone the repo:
  
 ```bash
-git clone https://github.com/<your-username>/nc-news.git
+git clone https://github.com/CeriBain/nc-news.git
 cd nc-news
 ```
  
